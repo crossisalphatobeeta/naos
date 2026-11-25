@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NaosLearn</title>
+<meta name="description" content="Live online classes for Indian children abroad, ages 5–18, taught by industry experts. Maths, Science, English, Computer Science and AI. Book a free demo class.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: warm, confident, premium — a world-class school that parents trust and kids find exciting.
+   IDEA: a star chart. Naos is a star; every subject is a star in a constellation that leads from classroom to career.
+   PICTURE: a night-sky constellation joining Maths, Science, English, Code and AI around one bright star.
+   COLOUR and TYPE: deep night #0f1e3d dominant, sky #6cc4ff support, coral #ff6a3d accent on white; Sora + Nunito Sans.
+   LAYOUT: full-bleed night hero, white content bands, night bands for the expert promise and the footer. */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#0b1428);--ink:light-dark(#13203a,#e8eef9);--mute:light-dark(#4a5876,#a9b6cf);
+  --card:light-dark(#f3f7fd,#13203a);--line:light-dark(#dbe4f2,#24365a);
+  --night:#0f1e3d;--night2:#16295200;--sky:#6cc4ff;--coral:#ff6a3d;--coral-ink:light-dark(#c8441b,#ff8a63);--star:#ffe7a8}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Nunito Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;line-height:1.08;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5.2vw,56px);font-weight:800}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:700}
+h3{font-size:20px;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(48px,7vw,96px) max(5vw,16px)}
+.night{background:var(--night);color:#eaf1ff}
+.night .lead,.night .mute{color:#b9c7e4}
+.lead{font-size:19px;color:var(--mute);max-width:62ch}
+.mute{color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;font:700 16px Sora,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--coral);color:#fff}
+.btn.ghost{border-color:currentColor;background:transparent;color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:var(--night);color:#fff;border-bottom:1px solid #ffffff1a}
+.nav{display:flex;align-items:center;gap:20px;padding:10px max(5vw,16px);max-width:1340px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px Sora,sans-serif;text-decoration:none;color:#fff;flex:none}
+.logo svg{width:30px;height:30px}
+.logo b{color:var(--sky);font-weight:800}
+.links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.links a{flex:none;padding:10px 12px;text-decoration:none;color:#c9d6f0;font-weight:600;border-radius:8px}
+.links a:hover{color:#fff;background:#ffffff12}
+.nav .btn{min-height:42px;padding:0 18px;font-size:15px;flex:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero h1 em{font-style:normal;color:var(--star)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{padding:6px 12px;border:1px solid #ffffff2e;border-radius:999px;font-size:14px;color:#d5e0f5;white-space:nowrap}
+.sky{position:relative;aspect-ratio:1/0.86;width:100%}
+.sky svg{position:absolute;inset:0;width:100%;height:100%}
+.tw{animation:tw 3.2s ease-in-out infinite}
+.tw:nth-child(3n){animation-delay:1.1s}.tw:nth-child(4n){animation-delay:2s}
+@keyframes tw{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.tw{animation:none}html{scroll-behavior:auto}.btn{transition:none}}
+
+/* grids & cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.card{background:var(--card);border-radius:20px;padding:26px}
+.card svg{width:40px;height:40px;margin-bottom:12px}
+.card p{margin:0;color:var(--mute)}
+.night .card{background:#ffffff0d}
+.night .card p{color:#b9c7e4}
+.head{max-width:760px;margin-bottom:36px}
+
+/* textbook to industry */
+.bridge{width:100%;border-collapse:collapse;margin-top:8px}
+.bridge th,.bridge td{text-align:left;padding:14px 16px;border-bottom:1px solid #ffffff22;vertical-align:top}
+.bridge th{font:700 14px Sora,sans-serif;color:var(--sky)}
+.bridge td:first-child{font-weight:700;color:#fff;width:30%}
+.bridge td:nth-child(2){width:28%;color:var(--star)}
+
+/* subjects */
+.toggle{display:inline-flex;background:var(--card);border-radius:999px;padding:4px;margin-bottom:24px}
+.toggle button{border:0;background:transparent;color:var(--ink);min-height:44px;padding:0 20px;border-radius:999px;font:700 15px Sora,sans-serif;cursor:pointer}
+.toggle button[aria-pressed=true]{background:var(--night);color:#fff}
+.subj{border-top:4px solid var(--c);background:var(--card);border-radius:4px 4px 20px 20px;padding:24px}
+.subj ul{margin:10px 0 0;padding-left:18px;color:var(--mute)}
+.subj li{margin:4px 0}
+.curr{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;list-style:none;padding:0}
+.curr li{background:var(--card);border-radius:8px;padding:6px 12px;font-size:15px;font-weight:600}
+
+/* steps */
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));counter-reset:s}
+.step{position:relative;padding:26px;border:1px solid var(--line);border-radius:20px}
+.step .dot{width:44px;height:44px;border-radius:50%;background:var(--coral);display:grid;place-items:center;margin-bottom:14px}
+.step .dot svg{width:22px;height:22px}
+
+/* split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.ticks{list-style:none;padding:0;margin:0}
+.ticks li{padding:12px 0 12px 34px;border-bottom:1px solid var(--line);position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:16px;width:20px;height:20px;border-radius:50%;background:var(--coral) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3 3 7-7' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.night .ticks li{border-color:#ffffff22}
+.quote{font:700 clamp(22px,2.6vw,30px)/1.3 Sora,sans-serif;margin:0 0 18px}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;font:700 18px Sora,sans-serif;padding:14px 32px 14px 0;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:10px;font-size:26px;color:var(--coral-ink)}
+details[open] summary::after{content:"–"}
+details p{color:var(--mute);max-width:70ch}
+
+/* form */
+.formbox{background:var(--card);border-radius:24px;padding:clamp(20px,4vw,40px);max-width:860px;margin:0 auto}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tabs button{flex:1 1 160px;min-height:48px;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;font:700 15px Sora,sans-serif;cursor:pointer}
+.tabs button[aria-selected=true]{border-color:var(--coral);background:var(--coral);color:#fff}
+form .fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f.full{grid-column:1/-1}
+label{font-weight:700;font-size:15px}
+input,select,textarea{font:16px "Nunito Sans",sans-serif;min-height:48px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.req{color:var(--coral-ink)}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:flex;align-items:center;gap:8px;font-weight:600;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;background:var(--bg);min-height:44px}
+.checks input{width:18px;height:18px;min-height:0;accent-color:var(--coral)}
+.status{margin-top:16px;padding:14px 16px;border-radius:12px;display:none;font-weight:600}
+.status.ok{display:block;background:#1f9d5522;color:light-dark(#11663a,#7fe0a8)}
+.status.err{display:block;background:#ff6a3d22;color:var(--coral-ink)}
+.hp{position:absolute;left:-9999px}
+
+footer{font-size:15px}
+footer .cols{display:grid;gap:28px;grid-template-columns:minmax(0,1.4fr) repeat(auto-fit,minmax(160px,1fr))}
+footer a{text-decoration:none;color:#c9d6f0;display:block;padding:4px 0}
+footer h3{font-size:15px;color:#fff}
+
+@media(max-width:900px){.hero,.split{grid-template-columns:minmax(0,1fr)}.links{display:none}}
+@media(max-width:600px){
+  form .fields{grid-template-columns:minmax(0,1fr)}
+  .bridge thead{display:none}.bridge tr{display:grid;padding:12px 0;border-bottom:1px solid #ffffff22}
+  .bridge td{border:0;padding:3px 0;width:auto!important}
+  .nav .btn{padding:0 14px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 32 32"><path d="M16 1c1.2 8.6 6.4 13.8 15 15-8.6 1.2-13.8 6.4-15 15-1.2-8.6-6.4-13.8-15-15C9.6 14.8 14.8 9.6 16 1z"/></symbol>
+</svg>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top"><svg viewBox="0 0 32 32" fill="#ffe7a8"><use href="#star"/></svg><span>Naos<b>Learn</b></span></a>
+    <div class="links">
+      <a href="#difference">Why NaosLearn</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#how">How it works</a>
+      <a href="#schools">For schools</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn primary" href="#enquire" data-tab="parent">Book a free demo</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="band night">
+  <div class="wrap hero">
+    <div>
+      <h1>Your child learns from the people who <em>build the world</em></h1>
+      <p class="lead">Live online classes for Indian children abroad, aged 5 to 18. Our teachers are industry experts: engineers, data scientists, doctors and finance professionals. They teach your child's school curriculum and show where every lesson leads in real life.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#enquire" data-tab="parent">Book a free demo class</a>
+        <a class="btn ghost" href="#schools">Partner with us as a school</a>
+      </div>
+      <ul class="chips" aria-label="Countries we teach in">
+        <li>United States</li><li>United Kingdom</li><li>Canada</li><li>Australia</li><li>New Zealand</li><li>UAE</li><li>Europe</li>
+      </ul>
+    </div>
+    <div class="sky" role="img" aria-label="A constellation of five subjects, Maths, Science, English, Code and AI, connected to the bright star Naos">
+      <svg viewBox="0 0 520 448">
+        <defs>
+          <radialGradient id="glow"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".9"/><stop offset=".35" stop-color="#6cc4ff" stop-opacity=".35"/><stop offset="1" stop-color="#6cc4ff" stop-opacity="0"/></radialGradient>
+          <radialGradient id="planet" cx=".35" cy=".3"><stop offset="0" stop-color="#2c4f8f"/><stop offset="1" stop-color="#0f1e3d"/></radialGradient>
+        </defs>
+        <g fill="#ffffff">
+          <circle class="tw" cx="40" cy="40" r="1.6"/><circle class="tw" cx="120" cy="22" r="1.2"/><circle class="tw" cx="470" cy="30" r="1.8"/>
+          <circle class="tw" cx="500" cy="140" r="1.2"/><circle class="tw" cx="20" cy="190" r="1.4"/><circle class="tw" cx="300" cy="18" r="1.2"/>
+          <circle class="tw" cx="230" cy="120" r="1"/><circle class="tw" cx="420" cy="230" r="1.3"/><circle class="tw" cx="80" cy="300" r="1.1"/>
+          <circle class="tw" cx="360" cy="90" r="1"/><circle class="tw" cx="180" cy="250" r="1.2"/><circle class="tw" cx="500" cy="300" r="1"/>
+        </g>
+        <!-- planet horizon -->
+        <ellipse cx="260" cy="560" rx="380" ry="190" fill="url(#planet)"/>
+        <ellipse cx="260" cy="560" rx="380" ry="190" fill="none" stroke="#6cc4ff" stroke-opacity=".5" stroke-width="2"/>
+        <!-- constellation lines -->
+        <g stroke="#6cc4ff" stroke-opacity=".55" stroke-width="1.6" fill="none" stroke-dasharray="4 6">
+          <path d="M90 110 L210 200 L120 300"/><path d="M210 200 L300 175"/><path d="M300 175 L400 70"/><path d="M300 175 L430 290"/>
+        </g>
+        <!-- Naos -->
+        <circle cx="300" cy="175" r="78" fill="url(#glow)"/>
+        <use href="#star" x="272" y="147" width="56" height="56" fill="#ffe7a8"/>
+        <text x="300" y="232" text-anchor="middle" fill="#ffe7a8" font-family="Sora, system-ui, sans-serif" font-weight="800" font-size="17">Naos</text>
+        <!-- subject stars -->
+        <g font-family="Sora, system-ui, sans-serif" font-weight="700" font-size="15" fill="#eaf1ff">
+          <use href="#star" x="78" y="98" width="24" height="24" fill="#6cc4ff"/><text x="90" y="88" text-anchor="middle">Maths</text>
+          <use href="#star" x="196" y="186" width="28" height="28" fill="#ff6a3d"/><text x="172" y="190" text-anchor="end">Science</text>
+          <use href="#star" x="108" y="288" width="24" height="24" fill="#6cc4ff"/><text x="120" y="334" text-anchor="middle">English</text>
+          <use href="#star" x="386" y="56" width="28" height="28" fill="#ff6a3d"/><text x="400" y="44" text-anchor="middle">Code</text>
+          <use href="#star" x="416" y="276" width="28" height="28" fill="#6cc4ff"/><text x="430" y="326" text-anchor="middle">AI</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section class="band" id="difference">
+  <div class="wrap">
+    <div class="head">
+      <h2>Taught by industry experts, not just tutors</h2>
+      <p class="lead">Most tuition stops at the textbook. At NaosLearn, your child is taught by professionals who use this knowledge every day. They follow your school's curriculum, and in every class they connect the topic to real work, real problems and real careers.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><svg viewBox="0 0 40 40"><rect x="4" y="8" width="32" height="24" rx="4" fill="#6cc4ff"/><path d="M10 16h20M10 22h14" stroke="#0f1e3d" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>Your school's curriculum</h3><p>Lessons follow what your child studies at school, whether that's US, UK, IB, Cambridge, Australian, NZ, Canadian or CBSE.</p></div>
+      <div class="card"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#ff6a3d"/><path d="M12 22l6 6 10-14" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/></svg>
+        <h3>Exposure to the real world</h3><p>Experts share how the topic is used in their industry, so your child understands why it matters as well as how it works.</p></div>
+      <div class="card"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#6cc4ff"/><path d="M20 10v10l7 5" stroke="#0f1e3d" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg>
+        <h3>Times that fit your time zone</h3><p>Classes are held after school and at weekends in your local time, wherever you live.</p></div>
+      <div class="card"><svg viewBox="0 0 40 40"><use href="#star" x="4" y="4" width="32" height="32" fill="#ff6a3d"/></svg>
+        <h3>Indian values, global outlook</h3><p>Teachers who understand your family's ambitions and culture and prepare your child for an international future.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTBOOK TO INDUSTRY -->
+<section class="band night">
+  <div class="wrap">
+    <div class="head">
+      <h2>From the textbook to the real world</h2>
+      <p class="lead">Here's what an expert-led lesson adds. Each topic comes from the school syllabus, and each connection is something our experts work with.</p>
+    </div>
+    <table class="bridge">
+      <thead><tr><th>Topic in class</th><th>Who uses it</th><th>What your child sees</th></tr></thead>
+      <tbody id="bridge"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section class="band" id="subjects">
+  <div class="wrap">
+    <div class="head">
+      <h2>Five subjects for ages 5 to 18</h2>
+      <p class="lead">Choose 1-to-1 or small-group classes. Juniors build strong foundations through play and curiosity. Teens go deeper and prepare for exams, competitions and their future studies.</p>
+    </div>
+    <div class="toggle" role="group" aria-label="Age group">
+      <button type="button" id="tg-j" aria-pressed="true">Juniors · 5–12</button>
+      <button type="button" id="tg-t" aria-pressed="false">Teens · 13–18</button>
+    </div>
+    <div class="grid" id="subjgrid"></div>
+    <ul class="curr" aria-label="Curricula supported">
+      <li>US Common Core &amp; AP</li><li>UK National Curriculum, GCSE &amp; A-Level</li><li>IB PYP · MYP · DP</li><li>Cambridge IGCSE</li><li>Australian Curriculum</li><li>NZ NCEA</li><li>Canadian provincial</li><li>CBSE &amp; ICSE (Gulf)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EXPERTS -->
+<section class="band night" id="experts">
+  <div class="wrap split">
+    <div>
+      <h2>Who teaches at NaosLearn</h2>
+      <p class="lead">Our teachers are working professionals from a range of industries. They're chosen because they know their subject well and can explain it clearly to a child.</p>
+      <div class="grid" style="margin-top:24px" id="industries"></div>
+    </div>
+    <div>
+      <h3 style="margin-bottom:14px">How we choose our experts</h3>
+      <ul class="ticks">
+        <li>Proven experience in their industry</li>
+        <li>A trial lesson reviewed by our academic team</li>
+        <li>Identity and background checks before they teach children</li>
+        <li>Training in online teaching and child safeguarding</li>
+        <li>Regular feedback from parents to keep quality high</li>
+      </ul>
+      <p class="mute" style="margin-top:22px">Are you an industry professional who enjoys teaching? <a href="#enquire" data-tab="expert" style="color:var(--sky);font-weight:700">Apply to teach</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="head"><h2>Getting started is simple</h2></div>
+    <div class="steps">
+      <div class="step"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 6h16v13H4zM4 10h16M9 3v5M15 3v5" stroke="#fff" stroke-width="2" fill="none"/></svg></div><h3>Book a free demo</h3><p class="mute">Tell us your child's age, subject and curriculum, and pick a time that suits you.</p></div>
+      <div class="step"><div class="dot"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="4" stroke="#fff" stroke-width="2" fill="none"/><path d="M2 21c1-4 4-6 7-6s6 2 7 6M17 8l2 2 4-4" stroke="#fff" stroke-width="2" fill="none"/></svg></div><h3>Meet your expert</h3><p class="mute">We match your child with an expert in the subject, who runs a live trial class and assesses where they stand.</p></div>
+      <div class="step"><div class="dot"><svg viewBox="0 0 24 24"><path d="M4 18l5-6 4 3 7-9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div><h3>Learn and grow</h3><p class="mute">Your child gets a personal learning plan and regular classes, and you get progress updates.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARENTS -->
+<section class="band" style="padding-top:0">
+  <div class="wrap split">
+    <div>
+      <h2>Built for parents' peace of mind</h2>
+      <p class="lead">You'll always know what your child is learning and how they're getting on.</p>
+    </div>
+    <ul class="ticks">
+      <li>Live, interactive classes with no pre-recorded videos</li>
+      <li>Parents are welcome to sit in on any class</li>
+      <li>Regular progress updates and parent–teacher check-ins</li>
+      <li>Homework and practice aligned to school tests</li>
+      <li>One point of contact for scheduling and support</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section class="band night" id="schools">
+  <div class="wrap">
+    <div class="head">
+      <h2>Partner with NaosLearn</h2>
+      <p class="lead">We work with international and community schools to bring industry experts into their programmes, live and online, at times that fit the school day.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>After-school programmes</h3><p>Weekly online clubs in Coding, AI, Maths and Science, led by professionals from those fields.</p></div>
+      <div class="card"><h3>Remedial support</h3><p>Small-group catch-up classes for students who need extra help, matched to your syllabus and assessment calendar.</p></div>
+      <div class="card"><h3>Workshops &amp; camps</h3><p>One-day AI and coding workshops, industry talks, career sessions and holiday camps.</p></div>
+    </div>
+    <p style="margin-top:28px"><a class="btn primary" href="#enquire" data-tab="school">Send a partnership enquiry</a></p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="band" id="story">
+  <div class="wrap split">
+    <div>
+      <h2>Why we're called NaosLearn</h2>
+      <p class="quote">Every lesson should show a child where it can take them.</p>
+    </div>
+    <div>
+      <p>Naos is one of the hottest and most luminous stars visible to the naked eye. Sailors once steered by stars like it. We chose the name because good teaching should do the same: give a child a direction.</p>
+      <p>Indian families around the world invest a great deal in their children's education, but most tuition never goes beyond the textbook. Children learn to solve the problem, but rarely see why it matters or where it could lead.</p>
+      <p>So we built NaosLearn around professionals from the world's leading industries. They teach the curriculum, share their real work, and help children grow into confident, curious learners who are ready for a global future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band" id="faq" style="padding-top:0">
+  <div class="wrap" style="max-width:880px">
+    <h2>Questions parents ask</h2>
+    <div id="faqlist"></div>
+  </div>
+</section>
+
+<!-- ENQUIRY -->
+<section class="band night" id="enquire">
+  <div class="wrap">
+    <div class="head" style="margin-inline:auto;text-align:center">
+      <h2>Let's get started</h2>
+      <p class="lead" style="margin-inline:auto">The demo class is free and you don't have to sign up for anything. We'll reply within one working day.</p>
+    </div>
+    <div class="formbox" style="color:var(--ink)">
+      <div class="tabs" role="tablist" aria-label="Who is enquiring">
+        <button type="button" role="tab" id="t-parent" aria-selected="true">I'm a parent</button>
+        <button type="button" role="tab" id="t-school" aria-selected="false">I'm from a school</button>
+        <button type="button" role="tab" id="t-expert" aria-selected="false">I want to teach</button>
+      </div>
+      <form id="enq" novalidate>
+        <div class="fields" id="fields"></div>
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p style="margin:20px 0 0"><button class="btn primary" type="submit" id="send">Book my free demo</button></p>
+        <div class="status" id="status" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="band night" style="border-top:1px solid #ffffff1a">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="#top" style="padding:0"><svg viewBox="0 0 32 32" fill="#ffe7a8"><use href="#star"/></svg><span>Naos<b>Learn</b></span></a>
+      <p class="mute" style="margin-top:12px;max-width:40ch">Live online classes taught by industry experts, for Indian children around the world.</p>
+      <p class="mute" id="mailline">naoslearn.com</p>
+    </div>
+    <div><h3>Learn</h3><a href="#subjects">Subjects</a><a href="#how">How it works</a><a href="#faq">FAQ</a></div>
+    <div><h3>Partner</h3><a href="#schools">For schools</a><a href="#enquire" data-tab="expert">Teach with us</a><a href="#story">Our story</a></div>
+    <div><h3>Where we teach</h3><p class="mute" style="margin:0">USA · UK · Canada · Australia · New Zealand · UAE · Ireland · Germany · Netherlands · rest of Europe</p></div>
+  </div>
+  <div class="wrap mute" style="margin-top:36px;font-size:14px">© <span id="yr"></span> NaosLearn. All rights reserved.</div>
+</footer>
+
+<script>
+{
+/* ============ SETTINGS — edit these ============ */
+const CONTACT_EMAIL = "";   // e.g. "hello@naoslearn.com" — enquiries are emailed here (via FormSubmit.co)
+/* =============================================== */
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const bridge = [
+  ["Quadratic equations","Civil engineers","The curve of a bridge cable or arch is a parabola that engineers calculate."],
+  ["Probability & statistics","Data scientists, insurers","How apps predict what you'll watch next and how insurance prices risk."],
+  ["Percentages & interest","Bankers, finance analysts","Why savings grow, how loans cost money and how a business stays profitable."],
+  ["Cells & the human body","Doctors, biotech researchers","How doctors read a blood test and how new medicines are developed."],
+  ["Persuasive writing","Marketers, lawyers","How a brand campaign or a courtroom argument is built to convince people."],
+  ["Loops & logic","Software engineers","The same building blocks behind the games and apps they use every day."],
+  ["Pattern recognition","AI engineers","How AI learns to spot patterns, and why humans still need to check its work."]
+];
+document.getElementById('bridge').innerHTML = bridge.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+
+const subjects = [
+  {n:"Maths", c:"#6cc4ff", j:["Number sense & mental maths","Times tables & fractions","Word problems & reasoning","Olympiad-style puzzles"], t:["Algebra, geometry & trigonometry","Statistics & probability","Calculus foundations","GCSE, SAT, AP & IB exam prep"]},
+  {n:"Science", c:"#ff6a3d", j:["Simple experiments at home","Living things & the human body","Forces, energy & space","Scientific thinking"], t:["Physics, chemistry & biology","Practical and lab reasoning","Problem-solving for exams","Science fairs & research projects"]},
+  {n:"English", c:"#ffb84d", j:["Phonics & reading fluency","Spelling & grammar","Creative writing","Confident speaking"], t:["Essay & analytical writing","Literature analysis","Debate & public speaking","GCSE, IGCSE & IB English"]},
+  {n:"Computer Science", c:"#6cc4ff", j:["Block coding with Scratch","Logic puzzles & algorithms","Build your own games","Internet safety"], t:["Python programming","Web development","Data structures & algorithms","GCSE, AP & IB Computer Science"]},
+  {n:"AI", c:"#ff6a3d", j:["What is AI and how does it learn?","Train a simple image recogniser","AI in everyday life","Using AI safely and wisely"], t:["Machine learning basics","Building projects with AI tools","Prompting & AI-assisted coding","AI ethics and the future of work"]}
+];
+let age = 'j';
+const drawSubjects = () => {
+  document.getElementById('subjgrid').innerHTML = subjects.map(s =>
+    `<div class="subj" style="--c:${s.c}"><h3>${s.n}</h3><ul>${s[age].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+  document.getElementById('tg-j').setAttribute('aria-pressed', age==='j');
+  document.getElementById('tg-t').setAttribute('aria-pressed', age==='t');
+};
+document.getElementById('tg-j').addEventListener('click', () => {age='j';drawSubjects();});
+document.getElementById('tg-t').addEventListener('click', () => {age='t';drawSubjects();});
+drawSubjects();
+
+const industries = ["Software & AI","Engineering","Medicine & life sciences","Finance & banking","Media & communications","Research & academia"];
+document.getElementById('industries').innerHTML = industries.map(i => `<div class="card" style="padding:16px 18px"><h3 style="font-size:16px;margin:0">${i}</h3></div>`).join('');
+
+const faqs = [
+  ["Who are the teachers?","Working professionals from industries such as software, engineering, medicine and finance. Each one has a strong command of their subject and has been trained to teach children online."],
+  ["Will classes follow my child's school curriculum?","Yes. We plan lessons around your child's curriculum and grade, including US, UK, IB, Cambridge, Australian, NZ, Canadian and CBSE/ICSE, and around their upcoming tests."],
+  ["What time are the classes?","Classes are scheduled in your local time zone, usually after school or at weekends. Just tell us what suits your family."],
+  ["Are classes 1-to-1 or in groups?","Both. Choose 1-to-1 for fully personal attention, or a small group if your child enjoys learning with peers."],
+  ["How much does it cost?","Fees depend on the subject, the format and how often your child has class. We'll share a clear plan after the free demo, and there's no obligation to continue."],
+  ["What do we need for online classes?","A laptop or tablet with a camera, a stable internet connection and a quiet place to learn. We'll send the class link before each session."]
+];
+document.getElementById('faqlist').innerHTML = faqs.map(f => `<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join('');
+
+/* ---------- forms ---------- */
+const countries = ["United States","United Kingdom","Canada","Australia","New Zealand","United Arab Emirates","Ireland","Germany","Netherlands","France","Switzerland","Sweden","Other European country","Other"];
+const opt = a => '<option value="">Select…</option>' + a.map(x=>`<option>${x}</option>`).join('');
+const subjNames = subjects.map(s=>s.n);
+const F = (id,label,type='text',req=true,full=false,extra='') =>
+  `<div class="f${full?' full':''}"><label for="${id}">${label}${req?' <span class="req">*</span>':''}</label>${
+    type==='textarea' ? `<textarea id="${id}" name="${label}"${req?' required':''}></textarea>` :
+    type.startsWith('select:') ? `<select id="${id}" name="${label}"${req?' required':''}>${opt(type.slice(7).split('|'))}</select>` :
+    `<input id="${id}" name="${label}" type="${type}"${req?' required':''} ${extra}>`}</div>`;
+const checks = (label,items) => `<div class="f full"><span style="font-weight:700;font-size:15px">${label} <span class="req">*</span></span><div class="checks" data-group="${label}">${items.map((x,i)=>`<label><input type="checkbox" value="${x}"> ${x}</label>`).join('')}</div></div>`;
+
+const forms = {
+  parent: {btn:"Book my free demo", subject:"New demo request – NaosLearn", html:
+    F('p1',"Parent's name") + F('p2','Email','email',true,false,'autocomplete="email"') +
+    F('p3','WhatsApp / phone (with country code)','tel',true,false,'autocomplete="tel" placeholder="+1 555 000 0000"') +
+    F('p4','Country','select:'+countries.join('|')) +
+    F('p5',"Child's name",'text',false) + F('p6',"Child's age",'select:'+Array.from({length:14},(_,i)=>i+5).join('|')) +
+    checks('Subjects', subjNames) +
+    F('p7','Curriculum','select:US Common Core / AP|UK National Curriculum / GCSE / A-Level|IB|Cambridge IGCSE|Australian Curriculum|NZ NCEA|Canadian provincial|CBSE / ICSE|Not sure') +
+    F('p8','Preferred class time','select:Weekday after school|Weekday evening|Weekend morning|Weekend afternoon|Flexible') +
+    F('p9','Anything we should know?','textarea',false,true)},
+  school: {btn:"Send partnership enquiry", subject:"School partnership enquiry – NaosLearn", html:
+    F('s1','School name') + F('s2','Your name') + F('s3','Role','text',false) +
+    F('s4','Email','email',true,false,'autocomplete="email"') + F('s5','Phone','tel',false) +
+    F('s6','Country','select:'+countries.join('|')) +
+    checks('Interested in',["After-school programmes","Remedial support","Workshops & camps"]) +
+    F('s7','Approximate number of students','select:Under 25|25–100|100–300|300+') +
+    F('s8','Tell us about your needs','textarea',false,true)},
+  expert: {btn:"Apply to teach", subject:"Expert application – NaosLearn", html:
+    F('e1','Full name') + F('e2','Email','email',true,false,'autocomplete="email"') +
+    F('e3','Phone / WhatsApp','tel') + F('e4','Industry','select:'+industries.join('|')+'|Other') +
+    F('e5','Current role & company','text',true,true) + F('e6','Years of experience','select:2–5|5–10|10–15|15+') +
+    checks('Subjects you can teach', subjNames) +
+    F('e7','LinkedIn profile','url',false,true,'placeholder="https://linkedin.com/in/…"') +
+    F('e8','Why do you want to teach?','textarea',false,true)}
+};
+let mode = 'parent';
+const fields = document.getElementById('fields'), status = document.getElementById('status'), send = document.getElementById('send');
+const setMode = m => {
+  mode = m; fields.innerHTML = forms[m].html; send.textContent = forms[m].btn; status.className = 'status';
+  for (const k of Object.keys(forms)) document.getElementById('t-'+k).setAttribute('aria-selected', k===m);
+};
+for (const k of Object.keys(forms)) document.getElementById('t-'+k).addEventListener('click', () => setMode(k));
+document.querySelectorAll('[data-tab]').forEach(a => a.addEventListener('click', () => setMode(a.dataset.tab)));
+setMode('parent');
+
+const say = (cls,msg) => {status.className = 'status '+cls; status.textContent = msg;};
+document.getElementById('enq').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.target;
+  if (form._honey.value) return;
+  const bad = [...form.querySelectorAll('[required]')].find(el => !el.value.trim() || !el.checkValidity());
+  if (bad) { say('err', 'Please fill in "' + bad.name + '" correctly.'); bad.focus(); return; }
+  const data = {_subject: forms[mode].subject, _template: 'table', 'Enquiry type': mode};
+  for (const el of form.querySelectorAll('input:not([type=checkbox]):not(.hp),select,textarea')) data[el.name] = el.value.trim();
+  for (const g of form.querySelectorAll('[data-group]')) {
+    const v = [...g.querySelectorAll('input:checked')].map(i=>i.value);
+    if (!v.length) { say('err', 'Please choose at least one option under "' + g.dataset.group + '".'); return; }
+    data[g.dataset.group] = v.join(', ');
+  }
+  const email = form.querySelector('input[type=email]').value.trim();
+  if (email) data._replyto = email;
+  if (!CONTACT_EMAIL) { say('err', 'Thank you. Online enquiries are being set up, so your message has not been sent yet. Please try again soon.'); return; }
+  send.disabled = true; send.textContent = 'Sending…';
+  try {
+    const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(CONTACT_EMAIL), {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data)});
+    if (!r.ok) throw new Error(r.status);
+    form.reset(); say('ok', "Thank you! We've received your enquiry and will be in touch within one working day.");
+  } catch (err) {
+    say('err', 'Sorry, your enquiry could not be sent. Please email us at ' + CONTACT_EMAIL + '.');
+  } finally { send.disabled = false; send.textContent = forms[mode].btn; }
+});
+
+if (CONTACT_EMAIL) document.getElementById('mailline').innerHTML = `<a href="mailto:${esc(CONTACT_EMAIL)}">${esc(CONTACT_EMAIL)}</a>`;
+document.getElementById('yr').textContent = new Date().getFullYear();
+}
+</script>
+</body>
+</html>

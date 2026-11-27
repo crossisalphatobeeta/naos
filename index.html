@@ -8,7 +8,7 @@
 <meta name="page-type" content="service"><meta name="site-kind" content="other">
 <meta property="og:title" content="NaosLearn">
 <meta property="og:description" content="Live online classes for Indian children abroad, taught by industry experts.">
-<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:image" content="./hero.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23F2C46D' d='M16 1c1.2 8.6 6.4 13.8 15 15-8.6 1.2-13.8 6.4-15 15-1.2-8.6-6.4-13.8-15-15C9.6 14.8 14.8 9.6 16 1z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,9 +226,9 @@ footer h3{font:600 15px var(--sans);color:#fff;margin-bottom:8px}
 <main id="top">
 
 <section class="hero">
-  <!-- Hero loop generated with Higgsfield (Seedance). Swap assets/hero.mp4 for a class recording later. -->
-  <img class="poster" src="assets/hero.jpg" alt="" aria-hidden="true">
-  <video id="herovid" autoplay muted loop playsinline preload="metadata" poster="assets/hero.jpg" aria-hidden="true"><source src="assets/hero.mp4" type="video/mp4"></video>
+  <!-- Hero loop generated with Higgsfield (Seedance). Swap ./hero.mp4 for a class recording later. -->
+  <img class="poster" src="./hero.jpg" alt="" aria-hidden="true">
+  <video id="herovid" autoplay muted loop playsinline preload="metadata" poster="./hero.jpg" aria-hidden="true"><source src="./hero.mp4" type="video/mp4"></video>
   <div class="wrap">
     <h1 data-enter="1">Live classes for Indian children abroad, taught by industry experts</h1>
     <p class="lead" data-enter="2">Maths, Science, English, Computer Science and AI for ages 5 to 18. Lessons follow your child's school curriculum, run in your time zone, and are taught by engineers, doctors and data scientists who use the subject at work.</p>
@@ -291,7 +291,7 @@ footer h3{font:600 15px var(--sans);color:#fff;margin-bottom:8px}
 
 <section class="sec night" id="timezones">
   <div class="wrap split" style="align-items:center">
-    <div class="globe"><img src="assets/globe.webp" alt="Arcs of light from India to families around the world" loading="lazy" width="1600" height="893"></div>
+    <div class="globe"><img src="./globe.webp" alt="Arcs of light from India to families around the world" loading="lazy" width="1600" height="893"></div>
     <div>
       <h2>Class times set by your clock, not ours</h2>
       <p class="lead soft" style="margin-top:20px">Tell us when your child is free after school or at weekends. We schedule every class in your local time.</p>
@@ -327,7 +327,7 @@ footer h3{font:600 15px var(--sans);color:#fff;margin-bottom:8px}
       <h2>Bring industry experts into your school</h2>
       <p class="lead soft">We work with international and community schools. Classes run live online at times that fit the school day.</p>
     </div>
-    <div class="wide-pic"><img src="assets/school.webp" alt="A classroom of students watching an engineer teach live on the big screen" loading="lazy" width="1800" height="1344"></div>
+    <div class="wide-pic"><img src="./school.webp" alt="A classroom of students watching an engineer teach live on the big screen" loading="lazy" width="1800" height="1344"></div>
     <div class="offers">
       <div><h3>After-school programmes</h3><p class="soft">Weekly online clubs in Coding, AI, Maths and Science, run by people who work in those fields.</p></div>
       <div><h3>Catch-up classes</h3><p class="soft">Small groups for students who need extra help, planned around your syllabus and assessment dates.</p></div>
@@ -415,7 +415,7 @@ let cur = 0;
 $('topics').innerHTML = topics.map((x,i) => `<li><button role="tab" id="tp${i}" aria-selected="${i===0}" aria-controls="panel" tabindex="${i===0?0:-1}">${x.t}<small>${x.s}</small></button></li>`).join('');
 const drawPanel = () => {
   const x = topics[cur], a = art[x.s];
-  $('panel').innerHTML = `<div class="fade"><div class="art">${a ? `<img src="assets/${a}.webp" alt="" width="1400" height="1045">` : `<div class="type" aria-hidden="true">Aa</div>`}</div>
+  $('panel').innerHTML = `<div class="fade"><div class="art">${a ? `<img src="./${a}.webp" alt="" width="1400" height="1045">` : `<div class="type" aria-hidden="true">Aa</div>`}</div>
     <dl><div><dt>In class</dt><dd>${x.t}, from the ${x.s} syllabus</dd></div>
     <div><dt>At work</dt><dd>${x.work}</dd></div>
     <div><dt>In the lesson</dt><dd>${x.lesson}</dd></div></dl></div>`;
@@ -444,7 +444,7 @@ const subjects = [
 let age = 'j';
 const drawSubjects = () => {
   $('subjects-list').innerHTML = subjects.map(s => `<article class="subj${s.w?' wide':''}">
-    <div class="pic">${s.a ? `<img src="assets/${s.a}.webp" alt="" loading="lazy" width="1400" height="1045">` : `<div class="type" aria-hidden="true">Aa</div>`}</div>
+    <div class="pic">${s.a ? `<img src="./${s.a}.webp" alt="" loading="lazy" width="1400" height="1045">` : `<div class="type" aria-hidden="true">Aa</div>`}</div>
     <div class="body"><h3>${s.n}</h3><ul>${s[age].map(x=>`<li>${x}</li>`).join('')}</ul></div></article>`).join('');
   $('ag-j').setAttribute('aria-pressed', age==='j'); $('ag-t').setAttribute('aria-pressed', age==='t');
 };
